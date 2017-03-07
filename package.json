@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/wanglimeng/lnyj/issues"
   },
-  "homepage": "https://github.com/wanglimeng/lnyj#readme"
+  "homepage": "https://github.com/wanglimeng/lnyj#readme",
+  "dependencies": {
+    "koa": "^2.0.1",
+    "koa-router": "^5.4.0",
+    "mysql": "^2.13.0"
+  }
 }
