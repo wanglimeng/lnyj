@@ -13,4 +13,10 @@ module.exports = {
 		}
 
 	},
+	mysqlSession: {
+		user: 'root',
+		password: '',
+		database: 'lnyj',
+		host: 'localhost'
+	}
 }
