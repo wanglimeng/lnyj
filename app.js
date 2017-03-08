@@ -9,7 +9,9 @@ const logger = require('koa-logger');
 const session = require('koa-generic-session');
 const MysqlStore = require('koa-mysql-session');
 const onerror = require('koa-onerror');
-
+const path = require('path');
+const config = require('./config/config.js');
+const index = require('./router/index.js');
 
 //错误处理
 onerror(app);
@@ -41,6 +43,10 @@ app.use(koaBody({
 app.use(serve(__dirname + '/public'));
 
 
+router.use('/',index.routes(),index.allowedMethods());
+app
+.use(router.routes())
+.use(router.allowedMethods());
 
 
 
