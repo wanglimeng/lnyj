@@ -13,6 +13,7 @@ const path = require('path');
 const config = require('./config/config.js');
 const index = require('./router/index.js');
 const users = require('./router/users.js');
+const articles = require('./router/articles.js')
 //错误处理
 onerror(app);
 app.keys = ['SESSIONID'];
@@ -49,6 +50,11 @@ app
 .use(router.allowedMethods());
 
 router.use('/users',users.routes(),users.allowedMethods());
+app
+.use(router.routes())
+.use(router.allowedMethods());
+
+router.use('/articles',articles.routes(),articles.allowedMethods());
 app
 .use(router.routes())
 .use(router.allowedMethods());

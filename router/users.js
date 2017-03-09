@@ -4,6 +4,7 @@ let Router = require('koa-router');
 
 let router = new Router();
 
+
 router.get('/login',async function (ctx,next) {
 	await ctx.render('users_login.ejs',{});
 });
@@ -27,14 +28,40 @@ router.post('/sign_in',async function (ctx,next) {
 	} else {
 		await User.create({
 			username:username,
-			password:password,
+			password:pas,
 			email:email
 		});
+		ctx.session.users = username;
 		ctx.redirect('/');
 	}
 });
 
+router.get('/:users',async function (ctx,next) {
+	ctx.body = ctx.params;
+	console.log(ctx.params);
+	
+});
+router.post('/login',async function (ctx,next) {
+	let username = ctx.request.body.username;
+	let password = ctx.request.body.password;	
+	let res = await User.findAll({
+		'where': {
+			username:username
+		}
+	});
+	console.log(res);
+	if(res.length ===0) {
 
+		ctx.body = "没有此用户";
+	} else if(res[0].dataValues.password != md5(password)) {
+		ctx.body = "密码不正确";
+	} else {
+		ctx.session.users = username;
+		ctx.redirect('/');
+	}
+	
+
+})
 
 
 
