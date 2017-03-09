@@ -13,7 +13,8 @@ const path = require('path');
 const config = require('./config/config.js');
 const index = require('./router/index.js');
 const users = require('./router/users.js');
-const articles = require('./router/articles.js')
+const articles = require('./router/articles.js');
+const upload = require('./router/upload.js');
 //错误处理
 onerror(app);
 app.keys = ['SESSIONID'];
@@ -36,7 +37,7 @@ app.use(views(path.join(__dirname, './views'), {
 
 
 app.use(koaBody({
-	formidable:{uploadDir: './public'},
+	formidable:{uploadDir: './public/images'},
 	multipart: true
 }));
 
@@ -45,16 +46,15 @@ app.use(serve(__dirname + '/public'));
 
 
 router.use('/',index.routes(),index.allowedMethods());
-app
-.use(router.routes())
-.use(router.allowedMethods());
+
 
 router.use('/users',users.routes(),users.allowedMethods());
-app
-.use(router.routes())
-.use(router.allowedMethods());
+
 
 router.use('/articles',articles.routes(),articles.allowedMethods());
+
+
+router.use('/upload',upload.routes(),upload.allowedMethods());
 app
 .use(router.routes())
 .use(router.allowedMethods());
