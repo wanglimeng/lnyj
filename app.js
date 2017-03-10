@@ -15,6 +15,7 @@ const index = require('./router/index.js');
 const users = require('./router/users.js');
 const articles = require('./router/articles.js');
 const upload = require('./router/upload.js');
+const save = require('./router/save.js');
 //错误处理
 onerror(app);
 app.keys = ['SESSIONID'];
@@ -55,15 +56,12 @@ router.use('/articles',articles.routes(),articles.allowedMethods());
 
 
 router.use('/upload',upload.routes(),upload.allowedMethods());
+
+router.use('/save',save.routes(),save.allowedMethods());
+
 app
 .use(router.routes())
 .use(router.allowedMethods());
-
-
-
-
-
-
 
 
 app.listen(3000);

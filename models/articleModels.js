@@ -21,7 +21,7 @@ let article = sequelize.define('article',{
 	}
 });
 
-article.sync({force:true});
+// article.sync({force:true});
 
 
 
