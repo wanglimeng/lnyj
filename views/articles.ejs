@@ -23,6 +23,14 @@
       .nihao {
         z-index: 0;
       }
+      #btn {
+        width: 300px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 1000;
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -59,8 +67,9 @@
       
 
     </div> <!-- /container -->
-
-    
+    <div id="btn">  
+      <div class="alert alert-success text-center" role="alert">保存成功</div>  
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/js/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -116,10 +125,17 @@
                   {
                     users:'<%=users%>',
                     title:$('.form-control').val(),
-                    html:testEditor.getHTML()
+                    html:testEditor.getHTML(),
+                    md:testEditor.getMarkdown()
                   },
-                  function(data,status){
-                    alert("Data: " + data + "\nStatus: " + status);
+                  function(data){
+                    // alert(data.success);
+                    if(data.success === 1) {
+                      $('#btn').fadeIn("slow");
+                      setTimeout(function () {
+                        $('#btn').fadeOut("slow");
+                      },3000)
+                    }
                   });
           });    
     });

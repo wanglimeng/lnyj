@@ -13,6 +13,9 @@ let article = sequelize.define('article',{
 	article_content: {
 		type: Sequelize.TEXT
 	},
+	article_md: {
+		type: Sequelize.TEXT
+	},
 	article_zan: {
 		type: Sequelize.STRING(1000)
 	},
