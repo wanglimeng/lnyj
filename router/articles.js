@@ -20,11 +20,12 @@ router.get('/list',async function (ctx) {
 
 router.get('/alter/:id',async function (ctx,next) {
 	let id = ctx.params.id;
-	let res = await artcle.findOne({id:id,username:ctx.session.users});
+	let res = await artcle.findOne({'where':{
+		'id':id
+	}});
 	let md = res.dataValues.article_md;
 	let title = res.dataValues.article_title;
-	console.log('--------'+id+'--'+md+'--'+title);
-	console.log(res);
+	
 	await ctx.render('articles_alter.ejs',{
 		id:id,
 		md:md,
