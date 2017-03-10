@@ -18,7 +18,7 @@
     <![endif]-->
     <style>
       body {
-        background-color: #3f3f3f;
+        /*background-color: #3f3f3f;*/
       }
       .nihao {
         z-index: 0;
@@ -46,14 +46,14 @@
             <a href="#" class="list-group-item list-group-item-info">好友列表</a>
             <a href="#" class="list-group-item list-group-item-info">私信</a>
             <a href="#" class="list-group-item list-group-item-info">用户资料设置</a>
-            <button type="button" class="list-group-item list-group-item-info" id="get-html-btn">保存</button>
+            <button type="button" class="list-group-item list-group-item-info" id="get-html-btn">保存修改</button>
           </div>
         </div>
         
         <div class="col-md-10">
           <div class="input-group input-group-lg nihao">
             <span class="input-group-addon" id="basic-addon1">标题</span>
-            <input type="text" class="form-control" placeholder="无文章标题" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" value="<%=title%>" placeholder="无文章标题" aria-describedby="basic-addon1">
 
           </div>
 
@@ -68,8 +68,9 @@
 
     </div> <!-- /container -->
     <div id="btn">  
-      <div class="alert alert-success text-center" role="alert">保存成功</div>  
+      <div class="alert alert-success text-center" role="alert">修改成功</div>  
     </div>
+    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/js/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -80,12 +81,13 @@
           testEditor = editormd("test-editormd", {
                         width: "100%",
                         height: 700,
-                        path : '../lib/',
+                        path : '/lib/',
                         theme : "dark",
 
                         previewTheme : "dark",
                         editorTheme : "pastel-on-dark",
-                        
+                        markdown : '<%=md%>',
+
                         codeFold : true,
                         //syncScrolling : false,
                         saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
@@ -123,7 +125,7 @@
          $("#get-html-btn").bind('click', function() {
               $.post("/save",
                   {
-                    users:'<%=users%>',
+                    users:<%=id%>,
                     title:$('.form-control').val(),
                     html:testEditor.getHTML(),
                     md:testEditor.getMarkdown()

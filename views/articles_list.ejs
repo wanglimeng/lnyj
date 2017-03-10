@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>首页</title>
+    <link rel="stylesheet" href="/editor/css/editormd.min.css" />
+    <!-- Bootstrap -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+      body {
+        background-color: #fff;
+      }
+      .nihao {
+        z-index: 0;
+      }
+      #btn {
+        width: 300px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        z-index: 1000;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+      
+      <div class="row">
+
+        <div class="col-md-2">
+          <div class="list-group">
+            <a href="/" class="list-group-item text-center list-group-item-success">
+              首页
+            </a>
+            <a href="/articles/list" class="list-group-item list-group-item-info">文章列表</a>
+            <a href="#" class="list-group-item list-group-item-info">好友列表</a>
+            <a href="#" class="list-group-item list-group-item-info">私信</a>
+            <a href="#" class="list-group-item list-group-item-info">用户资料设置</a>
+            
+        </div>
+        
+        </div>
+      
+      <div class="col-md-10">
+
+        <div class="page-header text-center">
+          <h1>文章列表 <small>修改/删除文章</small></h1>
+        </div>
+        
+        <table class="table">
+          <tr>
+            <td>文章标题</td>
+            <td>创建时间</td>
+            <td>修改</td>
+            <td>删除</td>
+          </tr>
+          <% for (let i = 0;i<res.length;i++) {%>
+          <tr>
+            <td><%=res[i].article_title%></td>
+            <td><%=res[i].createdAt%></td>
+            <td> <a href="/articles/alter/<%=res[i].id%>">修改</a> </td>
+            <td> <a href="/articles/remove/<%=res[i].id%>">删除</a> </td>
+          </tr>
+          <% }%>
+        </table>
+        
+      </div>
+
+      </div>
+      
+
+    </div> <!-- /container -->
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/jquery-3.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+    
+  
+  </script>
+  </body>
+</html>
