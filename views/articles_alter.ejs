@@ -78,7 +78,8 @@
     <script src="/editor/editormd.min.js"></script>
     <script type="text/javascript">
     $(function() {
-          testEditor = editormd("test-editormd", {
+         $.get('/articles/md/<%=id%>',function(md) {
+            testEditor = editormd("test-editormd", {
                         width: "100%",
                         height: 700,
                         path : '/lib/',
@@ -86,7 +87,7 @@
 
                         previewTheme : "dark",
                         editorTheme : "pastel-on-dark",
-                        markdown : '<%=md%>',
+                        markdown : md,
 
                         codeFold : true,
                         //syncScrolling : false,
@@ -122,8 +123,10 @@
                             //this.resize("100%", 640);
                         }
                     });
+         });   
+          
          $("#get-html-btn").bind('click', function() {
-              $.post("/save",
+              $.post("/articles/update",
                   {
                     users:<%=id%>,
                     title:$('.form-control').val(),

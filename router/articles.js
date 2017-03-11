@@ -49,7 +49,39 @@ router.get('/remove/:id',async function (ctx,next) {
 	
 });
 
+router.get('/md/:id',async function (ctx) {
+	let id = ctx.params.id;
+	let res= await artcle.findOne({
+		'where': {
+			'id':id
+		}
+	});
+	let md = res.dataValues.article_md;
+	ctx.body = md;
+});
 
+router.post('/update',async function (ctx) {
+	let id = ctx.request.body.users;
+	let title = ctx.request.body.title;
+	let html = ctx.request.body.html;
+	let md = ctx.request.body.md;
+	let res=await artcle.update(
+		{
+			'article_title':title,
+			'article_content':html,
+			'article_md':md
+		},
+		{
+			'where': {
+				'id':id
+			}
+		}
+		);
+	ctx.body = {
+		success:1,
+		message:'成工'
+	};
+});
 
 
 
