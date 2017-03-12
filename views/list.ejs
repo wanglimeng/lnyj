@@ -8,8 +8,10 @@
     <title>首页</title>
 
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/editor/css/editormd.min.css">
+    <link rel="stylesheet" href="/editor/css/editormd.logo.min.css">
+    <link rel="stylesheet" href="/editor/css/editormd.preview.min.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,6 +22,7 @@
       body {
         background-color: #ededef;
       }
+      
     </style>
   </head>
   <body>
@@ -34,7 +37,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">博客</a>
+      <a class="navbar-brand" href="/">首页</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,66 +57,21 @@
   </div><!-- /.container-fluid -->
   </nav>  
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-      
-      <% for (let i=0;i<res.length;i++) { %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="page-header">
-
-            <h1><a href="/list/<%=res[i].dataValues.id%>"><%=res[i].dataValues.article_title%></a></h1>
-            
-        <div class="row">
-        <div class="col-md-5">
-          <div class="row">
-            <div class="col-md-3">
-              <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>  <a href="">标签</a>
-            </div>
-            <div class="col-md-3"><a href="#">标签</a></div>
-            <div class="col-md-3"><a href="#">标签</a></div>
-            <div class="col-md-3"><a href="#">标签</a></div>
-          </div>
+          <h1 class="text-center"><%=title%></h1>
+          <%-html%>
         </div>
-        <div class="col-md-7">
-          <div class="row">
-            <div class="col-md-3"><a href="#">热度(100)</a></div>
-            <div class="col-md-3"><a href="#">评论(200)</a></div>
-            <div class="col-md-3"><a href="#">分享</a></div>
-            <div class="col-md-3">
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span></div>
-          </div>
-        </div>
-      </div>  
-          </div>
         </div>
       </div>
-      
-      <% }%>
-
-    </div>
-    <div class="col-md-4">
-      <table class="table table-hover">
-        <tr>
-          <td>
-            <span class="glyphicon glyphicon-book" aria-hidden="true"></span>  文章
-          </td>
-          <td><%=res.length%></td>
-        </tr>
-        <tr>
-          <td>
-            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>  喜欢
-          </td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  关注
-          </td>
-          <td>0</td>
-        </tr>
-      </table>
+        
+      </div>
+      <div class="col-md-2"></div>
     </div>
   </div>
  
@@ -124,8 +82,8 @@
 
     
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="/js/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>

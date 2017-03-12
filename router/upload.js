@@ -7,7 +7,7 @@ router.post('/',async function (ctx,next) {
 	let files = ctx.request.body.files['editormd-image-file'];
 	let filepath = files.path;
 	let filename = files.name;
-	console.log(filepath.replace("public",""));
+	
 	let ext = path.extname(filename);
 	let newfilename = filepath+ext;
 

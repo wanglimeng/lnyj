@@ -12,8 +12,12 @@ router.get('/',async function (ctx,next) {
 });
 
 router.get('/list',async function (ctx) {
-	let res = await artcle.findAll({username:ctx.session.users});
-	console.log(res.length);
+	let res = await artcle.findAll({
+		'where': {
+			'username':ctx.session.users
+		}
+	});
+	
 	
 	await ctx.render('articles_list',{res:res});
 });

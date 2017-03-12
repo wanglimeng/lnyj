@@ -23,7 +23,7 @@ router.post('/sign_in',async function (ctx,next) {
 	if (username == "" || password == "" || password1 == "" || email == "") {
 		ctx.body = "不能为空";
 	} else if (password != password1) {
-		console.log(password===password1);
+		
 		ctx.body = "两次密码不一致";
 	} else {
 		await User.create({
